@@ -5,6 +5,7 @@ using UnityEngine;
 public class RendererDisablerComponent : MonoBehaviour
 {
     public Renderer rendererToDisable;
+    public float reenableDelay = 5.0f;
 
     void Start()
     {
@@ -26,7 +27,7 @@ public class RendererDisablerComponent : MonoBehaviour
 
     IEnumerator ReenableRenderer()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(reenableDelay);
         rendererToDisable.enabled = true;
     }
 
