@@ -20,15 +20,22 @@ public class RendererDisablerComponent : MonoBehaviour
         if (other.CompareTag("Player"))
         {   
             rendererToDisable.enabled = false;
+            StartCoroutine(ReenableRenderer());
         }
     }
 
-    void OnTriggerExit(Collider other)
+    IEnumerator ReenableRenderer()
     {
-        Debug.Log("trigger exit");
-        if (other.CompareTag("Player"))
-        {
-            rendererToDisable.enabled = true;
-        }
+        yield return new WaitForSeconds(5.0f);
+        rendererToDisable.enabled = true;
     }
+
+    // void OnTriggerExit(Collider other)
+    // {
+    //     Debug.Log("trigger exit");
+    //     if (other.CompareTag("Player"))
+    //     {
+    //         rendererToDisable.enabled = true;
+    //     }
+    // }
 }
